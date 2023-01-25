@@ -14,24 +14,37 @@ namespace Dummy_DB
 
         public static void ShowAllBooks()
         {
-            string[] readersData = File.ReadAllLines("readers.csv");
-            string[] booksData = File.ReadAllLines("books.csv");
-            List<Reader> readers = new List<Reader>();
-            List<Book> books = new List<Book>();
+            List<Reader> readers = InitReaders();
+            List<Book> books = InitBooks(readers);
 
-            Console.WriteLine($"{"id",-3}|{"Author",-20}|{"Title",-25}|{"Reader",-20}|{"Time Of Borrow",-14}|");
-            Console.WriteLine(new String('-', 100));
+            Console.WriteLine($"{"id",-3}|{"Author",-20}|{"Title",-25}|{"Reader",-20}|{"Borrowing Timr",-14}|");
+            Console.WriteLine(new String('-', 87));
 
-            foreach (string readerData in readersData) readers.Add(CsvParser.ParseReader(readerData));
-            foreach (string bookData in booksData)
+            foreach (Book book in books)
             {
-                Book book = CsvParser.ParseBook(bookData, readers);
-                books.Add(book);
                 Console.Write($"{book.Id,3}|{book.Author,-20}|{book.Title,-25}|");
                 if (book.Reader != null) Console.Write("{0,-20}|  {1:dd-MM-yyyy}  |", book.Reader.Name, book.BorrowTime);
                 else Console.Write("{0,-20}|  {1, -10}  |", "", "");
                 Console.WriteLine();
             }
+
+            Console.WriteLine(new String('-', 87));
+        }
+
+        public static List<Reader> InitReaders()
+        {
+            string[] readersData = File.ReadAllLines("readers.csv");
+            List<Reader> readers = new List<Reader>();
+            foreach (string readerData in readersData) readers.Add(CsvParser.ParseReader(readerData));
+            return readers;
+        }
+
+        public static List<Book> InitBooks(List<Reader> readers)
+        {
+            string[] booksData = File.ReadAllLines("books.csv");
+            List<Book> books = new List<Book>();
+            foreach (string bookData in booksData) books.Add(CsvParser.ParseBook(bookData, readers));
+            return books;
         }
     }
 }
