@@ -51,7 +51,7 @@ namespace Dummy_DB
             return new Book(id, bookProps[Author], bookProps[Title], borrowTime, year, bookcaseNumber, shelfNumber, null);
         }
 
-        public static int TryParseLibraryCardNumber(string LibraryCardNumber)
+        private static int TryParseLibraryCardNumber(string LibraryCardNumber)
         {
             int libraryCardNumber;
             if(!int.TryParse(LibraryCardNumber, out libraryCardNumber) || libraryCardNumber <= 0)
@@ -61,7 +61,7 @@ namespace Dummy_DB
             return libraryCardNumber;
         }
 
-        public static int TryParseId(string Id)
+        private static int TryParseId(string Id)
         {
             int id;
             if(!int.TryParse(Id, out id) || id <= 0)
@@ -71,7 +71,7 @@ namespace Dummy_DB
             return id;
         }
 
-        public static int TryParseReaderId(string ReaderId)
+        private static int TryParseReaderId(string ReaderId)
         {
             int readerId;
             if (!int.TryParse(ReaderId, out readerId) || readerId <= 0)
@@ -81,7 +81,7 @@ namespace Dummy_DB
             return readerId;
         }
 
-        public static DateTime TryParseBorrowTime(string BorrowTime)
+        private static DateTime TryParseBorrowTime(string BorrowTime)
         {
             DateTime borrowTime;
             if (!DateTime.TryParse(BorrowTime, out borrowTime))
@@ -91,7 +91,7 @@ namespace Dummy_DB
             return borrowTime;
         }
 
-        public static int TryParseYear(string Year)
+        private static int TryParseYear(string Year)
         {
             int year;
             if(int.TryParse(Year, out year) || year <= 0)
@@ -101,7 +101,7 @@ namespace Dummy_DB
             return year;
         }
 
-        public static int TryParseBookcaseNumber(string BookcaseNumber)
+        private static int TryParseBookcaseNumber(string BookcaseNumber)
         {
             int bookcaseNumber;
             if(!int.TryParse(BookcaseNumber, out bookcaseNumber) || bookcaseNumber <= 0)
@@ -111,7 +111,7 @@ namespace Dummy_DB
             return bookcaseNumber;
         }
 
-        public static int TryParseShelfNumber(string ShelfNumber)
+        private static int TryParseShelfNumber(string ShelfNumber)
         {
             int shelfNumber;
             if (!int.TryParse(ShelfNumber, out shelfNumber) || shelfNumber <= 0)

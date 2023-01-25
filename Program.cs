@@ -35,7 +35,10 @@ namespace Dummy_DB
         {
             string[] readersData = File.ReadAllLines("readers.csv");
             List<Reader> readers = new List<Reader>();
-            foreach (string readerData in readersData) readers.Add(CsvParser.ParseReader(readerData));
+            foreach (string readerData in readersData)
+            {
+                readers.Add(CsvParser.ParseReader(readerData));
+            }
             return readers;
         }
 
@@ -43,7 +46,10 @@ namespace Dummy_DB
         {
             string[] booksData = File.ReadAllLines("books.csv");
             List<Book> books = new List<Book>();
-            foreach (string bookData in booksData) books.Add(CsvParser.ParseBook(bookData, readers));
+            foreach (string bookData in booksData)
+            {
+                books.Add(CsvParser.ParseBook(bookData, readers));
+            }
             return books;
         }
     }
