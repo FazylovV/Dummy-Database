@@ -33,7 +33,7 @@ namespace Dummy_DB
             string[] bookProps = book.Split(';');
 
             int id = TryParseId(bookProps[IdConst]);
-            int readerId = TryParseId(bookProps[ReaderId]);
+            int readerId = TryParseReaderId(bookProps[ReaderId]);
             DateTime borrowTime = TryParseBorrowTime(bookProps[BorrowTime]);
             int year = TryParseYear(bookProps[Year]);
             int bookcaseNumber = TryParseBookcaseNumber(bookProps[BookcaseNumber]);
@@ -94,7 +94,7 @@ namespace Dummy_DB
         private static int TryParseYear(string Year)
         {
             int year;
-            if(int.TryParse(Year, out year) || year <= 0)
+            if(!int.TryParse(Year, out year) || year <= 0)
             {
                 throw new Exception($"Данные неверны в 'books.csv' столбец 'year' ({Year})");
             }

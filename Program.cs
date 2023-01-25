@@ -16,6 +16,7 @@ namespace Dummy_DB
         {
             List<Reader> readers = InitReaders();
             List<Book> books = InitBooks(readers);
+            int max = books.Max(x => x.Author.Length);
 
             Console.WriteLine($"{"id",-3}|{"Author",-20}|{"Title",-25}|{"Reader",-20}|{"Borrowing Timr",-14}|");
             Console.WriteLine(new String('-', 87));
