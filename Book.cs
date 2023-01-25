@@ -13,8 +13,8 @@ namespace Dummy_DB
         public string Title { get; }
         public DateTime BorrowTime { get; set; }
         public int Year { get; }
-        public int BookcaseNumber { get; }
-        public int ShelfNumber { get; }
+        public int BookcaseNumber { get; set; }
+        public int ShelfNumber { get; set; }
         public Reader Reader { get; set; }
 
         public Book(int id, string author, string title, DateTime borrowTime, int year, int bookcaseNumber, int shelfNumber, Reader reader)
