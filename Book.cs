@@ -28,5 +28,26 @@ namespace Dummy_DB
             ShelfNumber = shelfNumber;
             Reader = reader;
         }
+
+        public string FormatBookToString(int[] maxLengths)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Id.ToString().PadLeft(maxLengths[0]));
+            sb.Append($"|{Author.PadRight(maxLengths[1])}");
+            sb.Append($"|{Title.PadRight(maxLengths[2])}");
+
+            if(Reader.Name != "")
+            {
+                sb.Append($"|{Reader.Name.PadRight(maxLengths[3])}");
+                sb.Append($"|{BorrowTime.ToString("dd-MM-yyyy").PadRight(maxLengths[4])}|");
+            }
+            else
+            {
+                sb.Append($"|{new String(' ', maxLengths[3])}");
+                sb.Append($"|{new String(' ', maxLengths[4])}|");
+            }
+
+            return sb.ToString();
+        }
     }
 }

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dummy_DB
 {
@@ -48,7 +45,7 @@ namespace Dummy_DB
                     return new Book(id, bookProps[Author], bookProps[Title], borrowTime, year, bookcaseNumber, shelfNumber, thisReader);
                 }
             }
-            return new Book(id, bookProps[Author], bookProps[Title], borrowTime, year, bookcaseNumber, shelfNumber, null);
+            return new Book(id, bookProps[Author], bookProps[Title], borrowTime, year, bookcaseNumber, shelfNumber, new Reader(0, ""));
         }
 
         private static int TryParseLibraryCardNumber(string LibraryCardNumber)
@@ -74,7 +71,7 @@ namespace Dummy_DB
         private static int TryParseReaderId(string ReaderId)
         {
             int readerId;
-            if (!int.TryParse(ReaderId, out readerId) || readerId <= 0)
+            if ((!int.TryParse(ReaderId, out readerId) || readerId <= 0) && ReaderId != "")
             {
                 throw new Exception($"Данные неверны в 'books.csv' столбец 'readerId' ({ReaderId})");
             }
