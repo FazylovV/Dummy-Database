@@ -1,0 +1,46 @@
+{
+  "name": "Book",
+  "columns": [
+    {
+      "name": "id",
+      "type": "int",
+      "isPK": "true"
+    },
+    {
+      "name": "author",
+      "type": "string",
+      "isPK": "false"
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "isPK": "false"
+    },
+    {
+      "name": "readerId",
+      "type": "int",
+      "isPK": "false",
+      "referenceTable": "Reader"
+    },
+    {
+      "name": "borrowTime",
+      "type": "DateTime",
+      "isPK": "false"
+    },
+    {
+      "name": "year",
+      "type": "int",
+      "isPK": "false"
+    },
+    {
+      "name": "bookcaseNumber",
+      "type": "int",
+      "isPK": "false"
+    },
+    {
+      "name": "shelfNumber",
+      "type": "int",
+      "isPK": "false"
+    }
+  ]
+}
